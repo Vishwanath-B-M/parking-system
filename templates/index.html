@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Smart Parking System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- TITLE -->
+
+    <h1>🚗 Smart Parking Management System</h1>
+
+    <!-- ENTRY BUTTON -->
+
+    <div class="top-controls">
+
+        <button onclick="generateToken()">
+
+            Enter Parking
+
+        </button>
+
+    </div>
+
+    <!-- TOKEN -->
+
+    <h2 id="tokenText"></h2>
+
+    <!-- MAP -->
+
+    <div class="map-wrapper">
+
+        <!-- ENTRY GATE and exit gate-->
+
+        <div class="main-gate">
+
+            SMART ENTRY / EXIT GATE
+
+        </div>
+
+        <!-- ROAD -->
+
+        <div class="road"></div>
+
+        <!-- SVG PATH -->
+
+        <svg id="pathSVG">
+
+            <path id="routePath"></path>
+
+        </svg>
+
+        <!-- PARKING SLOTS -->
+
+        <div class="slot available"
+             id="A1"
+             onclick="selectSlot('A1')">
+
+            A1
+
+        </div>
+
+        <div class="slot available"
+             id="A2"
+             onclick="selectSlot('A2')">
+
+            A2
+
+        </div>
+
+        <div class="slot available"
+             id="A3"
+             onclick="selectSlot('A3')">
+
+            A3
+
+        </div>
+
+        <div class="slot available"
+             id="A4"
+             onclick="selectSlot('A4')">
+
+            A4
+
+        </div>
+
+        <div class="slot available"
+             id="A5"
+             onclick="selectSlot('A5')">
+
+            A5
+
+        </div>
+
+        <div class="slot available"
+             id="A6"
+             onclick="selectSlot('A6')">
+
+            A6
+
+        </div>
+
+    </div>
+
+    <!-- NAVIGATION -->
+
+    <div class="navigation-panel">
+
+        <h2>🛰 Navigation</h2>
+
+        <p id="directionText">
+
+            Waiting For Vehicle Entry...
+
+        </p>
+
+    </div>
+
+    <!-- ACTION SECTION -->
+
+    <div class="action-section">
+
+        <!-- CONFIRM PARKED -->
+
+        <button id="confirmParkBtn"
+                class="action-btn park-btn"
+                onclick="confirmParked()">
+
+            Confirm Vehicle Parked
+
+        </button>
+
+        <!-- EXIT SECTION -->
+
+        <div class="exit-section">
+
+            <h2>Exit Parking</h2>
+
+            <div class="exit-controls">
+
+                <input type="text"
+                       id="exitToken"
+                       placeholder="Enter Token">
+
+                <button onclick="exitParking()">
+
+                    Start Exit Navigation
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- CONFIRM EXIT -->
+
+        <button id="confirmExitBtn"
+                class="action-btn exit-btn"
+                onclick="confirmExit()">
+
+            Confirm Vehicle Reached Exit
+
+        </button>
+
+    </div>
+
+    <!-- BILL SECTION -->
+
+    <div id="billSection"></div>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
